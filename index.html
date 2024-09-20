@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Formulário</title>
+</head>
+<body>
+    <form id="meuFormulario">
+        <label for="campoA">Campo A:</label>
+        <input type="number" id="campoA" name="campoA" required>
+        <br>
+        <label for="campoB">Campo B:</label>
+        <input type="number" id="campoB" name="campoB" required>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+    <p id="mensagem"></p>
+
+    <script>
+        document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            const campoA = parseFloat(document.getElementById('campoA').value);
+            const campoB = parseFloat(document.getElementById('campoB').value);
+            const mensagem = document.getElementById('mensagem');
+
+            if (campoB > campoA) {
+                mensagem.textContent = 'Formulário válido! 😊';
+                mensagem.style.color = 'green';
+            } else {
+                mensagem.textContent = 'Formulário inválido. 😞';
+                mensagem.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
